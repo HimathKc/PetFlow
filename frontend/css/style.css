@@ -1,0 +1,87 @@
+/* ===== PetCare shared styles ===== */
+:root {
+  --cream: #fbf5e6;
+  --white: #fffdf8;
+  --beige: #efe3c8;
+  --yellow: #f0a830;
+  --yellow-dark: #d98f12;
+  --brown: #3b2f1e;
+}
+
+body {
+  background: var(--cream);
+  color: var(--brown);
+  font-family: 'Nunito', sans-serif;
+}
+
+h1, h2, h3, h4, h5, .brand {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+}
+
+/* ---- navbar ---- */
+.navbar { background: var(--white); box-shadow: 0 2px 8px rgba(0, 0, 0, .06); }
+.brand { font-size: 1.6rem; color: var(--brown); text-decoration: none; }
+.brand:hover { color: var(--brown); }
+.navbar .nav-link { color: var(--brown); font-weight: 600; margin: 0 6px; }
+.navbar .nav-link.active { border-bottom: 3px solid var(--yellow); }
+
+/* ---- buttons ---- */
+.btn-main { background: var(--yellow); color: var(--brown); border: 0; font-weight: 700; }
+.btn-main:hover { background: var(--yellow-dark); color: #fff; }
+.btn-light-main { background: var(--white); color: var(--brown); border: 1px solid #d9ccac; font-weight: 600; }
+.btn-light-main:hover { background: var(--beige); color: var(--brown); }
+
+/* ---- hero ---- */
+.hero h1 { font-size: 3.2rem; line-height: 1.15; }
+.hero img { border-radius: 24px; width: 100%; height: 380px; object-fit: cover; box-shadow: 0 8px 24px rgba(0, 0, 0, .12); }
+
+.feature-box { background: var(--white); border-radius: 16px; padding: 18px; height: 100%; box-shadow: 0 2px 8px rgba(0, 0, 0, .05); }
+.feature-box i { font-size: 2rem; color: var(--yellow); }
+
+/* ---- cards ---- */
+.pet-card { border: 0; border-radius: 16px; background: var(--white); box-shadow: 0 2px 10px rgba(0, 0, 0, .07); overflow: hidden; transition: transform .2s; }
+.pet-card:hover { transform: translateY(-4px); }
+.pet-card img { height: 180px; object-fit: cover; }
+.fav { color: var(--yellow); cursor: pointer; float: right; }
+
+.box { background: var(--white); border-radius: 16px; padding: 22px; box-shadow: 0 2px 10px rgba(0, 0, 0, .06); }
+
+/* ---- filter chips ---- */
+.chip { background: var(--beige); border: 0; border-radius: 20px; padding: 5px 18px; font-weight: 600; color: var(--brown); }
+.chip.active { background: var(--yellow); }
+
+/* ---- forms ---- */
+.form-control, .form-select { background: var(--white); border-color: #d9ccac; }
+.form-control:focus, .form-select:focus { border-color: var(--yellow); box-shadow: 0 0 0 .2rem rgba(240, 168, 48, .25); }
+
+/* ---- details page ---- */
+.main-img { width: 100%; height: 380px; object-fit: cover; border-radius: 16px; }
+.thumb { width: 100%; height: 70px; object-fit: cover; border-radius: 10px; cursor: pointer; border: 2px solid transparent; }
+.thumb:hover, .thumb.active { border-color: var(--yellow); }
+
+/* ---- footer ---- */
+footer { background: var(--white); border-top: 1px solid var(--beige); }
+
+/* ---- admin ---- */
+.admin-wrap { display: flex; min-height: 100vh; }
+.sidebar { width: 230px; background: var(--white); padding: 20px 14px; box-shadow: 2px 0 8px rgba(0, 0, 0, .05); }
+.sidebar a { display: block; padding: 10px 14px; border-radius: 10px; color: var(--brown); text-decoration: none; font-weight: 600; margin-bottom: 6px; }
+.sidebar a:hover { background: var(--beige); }
+.sidebar a.active { background: var(--yellow); }
+.stat-card { background: var(--white); border-radius: 16px; padding: 18px; display: flex; align-items: center; gap: 14px; box-shadow: 0 2px 10px rgba(0, 0, 0, .06); }
+.stat-card i { font-size: 2.2rem; color: var(--yellow); }
+.stat-card h3 { margin: 0; }
+.table > :not(caption) > * > * { background: transparent; }
+.badge-status { padding: 5px 12px; border-radius: 12px; font-size: .8rem; font-weight: 700; background: var(--beige); }
+.st-Pending { background: #f9e3a8; }
+.st-Approved, .st-Active { background: #cfe8c4; }
+.st-Rejected, .st-Blocked { background: #f3c6c0; }
+.cat-pic { width: 200px; border-radius: 20px; position: absolute; right: 20px; bottom: 20px; }
+
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2.2rem; }
+  .admin-wrap { flex-direction: column; }
+  .sidebar { width: 100%; }
+  .cat-pic { display: none; }
+}
