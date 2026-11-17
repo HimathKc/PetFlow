@@ -27,15 +27,6 @@
             </div>
             <div class="col-md-6"><label class="form-label">Breed</label><input type="text" id="breed" class="form-control"></div>
             <div class="col-md-6"><label class="form-label">Age</label><input type="text" id="age" class="form-control" placeholder="e.g. 3 months"></div>
-            <div class="col-md-6">
-              <label class="form-label">Gender</label>
-              <select id="gender" class="form-select"><option value="">Select...</option><option>Male</option><option>Female</option></select>
-            </div>
-            <div class="col-md-6">
-              <label class="form-label">Size</label>
-              <select id="size" class="form-select"><option value="">Select...</option><option>Small</option><option>Medium</option><option>Large</option></select>
-            </div>
-            <div class="col-12"><label class="form-label">Temperament</label><input type="text" id="temper" class="form-control"></div>
             <div class="col-12"><label class="form-label">About</label><textarea id="about" rows="3" class="form-control"></textarea></div>
             <div class="col-12">
               <label class="form-label">Photo</label>
@@ -52,42 +43,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
-  <script>
-    loadSidebar("Pets");
-
-    // edit mode: fill the form when ?id= is in the url
-    var editPet = findPet(getParam("id"));
-    if (editPet) {
-      document.getElementById("title").textContent = "Edit Pet - " + editPet.name;
-      ["name", "type", "breed", "age", "gender", "size", "temper", "about"].forEach(function (f) {
-        document.getElementById(f).value = editPet[f];
-      });
-      document.getElementById("preview").src = editPet.img;
-      document.getElementById("preview").classList.remove("d-none");
-    }
-
-    // image preview
-    document.getElementById("photo").addEventListener("change", function () {
-      var img = document.getElementById("preview");
-      img.src = URL.createObjectURL(this.files[0]);
-      img.classList.remove("d-none");
-    });
-
-    document.getElementById("petForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-      var ok = true;
-      ["name", "type", "breed", "age", "gender", "size", "temper"].forEach(function (f) {
-        var input = document.getElementById(f);
-        if (input.value.trim() === "") { showError(input, "This field is required"); ok = false; } else showError(input, "");
-      });
-      var about = document.getElementById("about");
-      if (about.value.trim().length < 10) { showError(about, "Write at least 10 characters"); ok = false; } else showError(about, "");
-
-      if (ok) {
-        showToast(editPet ? "Pet updated!" : "Pet added!");
-        setTimeout(function () { window.location.href = "admin-pets.html"; }, 1500);
-      }
-    });
-  </script>
+  <script src="js/admin-pet-form.js"></script>
 </body>
 </html>

@@ -19,7 +19,7 @@
       <!-- images -->
       <div class="col-md-6">
         <img id="mainImg" class="main-img" src="" alt="Pet">
-        <div class="row g-2 mt-1" id="thumbs"></div>
+        
       </div>
 
       <!-- info -->
@@ -28,9 +28,8 @@
           <h2><span id="pName"></span> <span id="pType" class="badge bg-warning text-dark fs-6"></span></h2>
           <table class="table table-borderless mt-3">
             <tr><td><i class="bi bi-calendar me-2"></i>Age</td><td id="pAge"></td></tr>
-            <tr><td><i class="bi bi-gender-ambiguous me-2"></i>Gender</td><td id="pGender"></td></tr>
-            <tr><td><i class="bi bi-rulers me-2"></i>Size</td><td id="pSize"></td></tr>
-            <tr><td><i class="bi bi-emoji-smile me-2"></i>Temperament</td><td id="pTemper"></td></tr>
+            <tr><td><i class="bi bi-tag me-2"></i>Breed</td><td id="pBreed"></td></tr>
+            <tr><td><i class="bi bi-info-circle me-2"></i>Status</td><td id="pStatus"></td></tr>
           </table>
           <h4>About <span id="pName2"></span></h4>
           <p id="pAbout"></p>
@@ -44,48 +43,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
-  <script>
-    var pet = findPet(getParam("id")) || pets[0];
-
-    document.getElementById("pName").textContent = pet.name;
-    document.getElementById("pName2").textContent = pet.name;
-    document.getElementById("pType").textContent = pet.type;
-    document.getElementById("pAge").textContent = pet.age;
-    document.getElementById("pGender").textContent = pet.gender;
-    document.getElementById("pSize").textContent = pet.size;
-    document.getElementById("pTemper").textContent = pet.temper;
-    document.getElementById("pAbout").textContent = pet.about;
-    document.getElementById("mainImg").src = pet.img;
-    document.getElementById("adoptBtn").href = "adopt.html?id=" + pet.id;
-
-    if (getRole() === "admin") {
-      // ADMIN: view-only poster (no customer navbar, no adopt button, no footer)
-      document.getElementById("navbar").innerHTML =
-        '<div class="bg-white shadow-sm py-3"><div class="container d-flex justify-content-between align-items-center">' +
-        '<span class="brand">🐾 PetCare <span class="badge bg-warning text-dark fs-6">Admin - View Only</span></span>' +
-        '<a href="admin-pets.html" class="btn btn-main">Back to Pets</a></div></div>';
-      document.getElementById("adoptBtn").remove();
-      document.getElementById("backLink").href = "admin-pets.html";
-      document.getElementById("backLink").innerHTML = '<i class="bi bi-arrow-left"></i> Back to Pets';
-    } else {
-      // GUEST / USER: normal website
-      loadNavbar("Browse Pets");
-      loadFooter();
-    }
-
-    // 5 thumbnails (same pet, different pictures)
-    var html = "";
-    for (var i = 0; i < 5; i++) {
-      var src = pet.img.replace("lock=" + pet.id, "lock=" + (pet.id * 10 + i));
-      html += '<div class="col"><img class="thumb ' + (i === 0 ? "active" : "") + '" src="' + src + '" onclick="changeImage(this)"></div>';
-    }
-    document.getElementById("thumbs").innerHTML = html;
-
-    function changeImage(img) {
-      document.getElementById("mainImg").src = img.src;
-      document.querySelectorAll(".thumb").forEach(function (t) { t.classList.remove("active"); });
-      img.classList.add("active");
-    }
-  </script>
+  <script src="js/pet-details.js"></script>
 </body>
 </html>

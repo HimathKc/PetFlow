@@ -53,26 +53,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
-  <script>
-    loadNavbar("Contact");
-    loadFooter();
-
-    document.getElementById("contactForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-      var name = document.getElementById("name");
-      var email = document.getElementById("email");
-      var message = document.getElementById("message");
-      var ok = true;
-
-      if (name.value.trim() === "") { showError(name, "Name is required"); ok = false; } else showError(name, "");
-      if (!isEmail(email.value)) { showError(email, "Enter a valid email"); ok = false; } else showError(email, "");
-      if (message.value.trim().length < 10) { showError(message, "Write at least 10 characters"); ok = false; } else showError(message, "");
-
-      if (ok) {
-        showToast("Message sent. Thank you!");
-        this.reset();
-      }
-    });
-  </script>
+  <script src="js/contact.js"></script>
 </body>
 </html>

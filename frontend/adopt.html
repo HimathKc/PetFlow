@@ -20,28 +20,8 @@
 
       <form id="adoptForm" novalidate>
         <div class="mb-3">
-          <label class="form-label">Full Name</label>
-          <input type="text" id="name" class="form-control">
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Email</label>
-          <input type="email" id="email" class="form-control">
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Phone</label>
-          <input type="text" id="phone" class="form-control">
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Home Type</label>
-          <select id="home" class="form-select">
-            <option value="">Select...</option>
-            <option>House with garden</option>
-            <option>Apartment</option>
-          </select>
-        </div>
-        <div class="mb-3">
           <label class="form-label">Why do you want to adopt?</label>
-          <textarea id="reason" class="form-control" rows="3"></textarea>
+          <textarea id="message" class="form-control" rows="4"></textarea>
         </div>
         <button class="btn btn-main w-100">Submit Request</button>
       </form>
@@ -52,35 +32,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
-  <script>
-    requireUser();   // only logged-in users can adopt
-    loadNavbar("Browse Pets");
-    loadFooter();
-
-    var pet = findPet(getParam("id")) || pets[0];
-    document.getElementById("petName").textContent = pet.name;
-    document.getElementById("backLink").href = "pet-details.html?id=" + pet.id;
-
-    document.getElementById("adoptForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-      var ok = true;
-      var name = document.getElementById("name");
-      var email = document.getElementById("email");
-      var phone = document.getElementById("phone");
-      var home = document.getElementById("home");
-      var reason = document.getElementById("reason");
-
-      showError(name, name.value.trim() === "" ? "Name is required" : ""); if (name.value.trim() === "") ok = false;
-      showError(email, !isEmail(email.value) ? "Enter a valid email" : ""); if (!isEmail(email.value)) ok = false;
-      showError(phone, !/^[0-9]{10}$/.test(phone.value) ? "Phone must be 10 digits" : ""); if (!/^[0-9]{10}$/.test(phone.value)) ok = false;
-      showError(home, home.value === "" ? "Select a home type" : ""); if (home.value === "") ok = false;
-      showError(reason, reason.value.trim().length < 10 ? "Write at least 10 characters" : ""); if (reason.value.trim().length < 10) ok = false;
-
-      if (ok) {
-        showToast("Request submitted! We will contact you soon.");
-        setTimeout(function () { window.location.href = "browse.html"; }, 1800);
-      }
-    });
-  </script>
+  <script src="js/adopt.js"></script>
 </body>
 </html>

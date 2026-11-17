@@ -39,33 +39,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
-  <script>
-    loadNavbar("Browse Pets");
-    loadFooter();
-
-    var currentType = "All";
-
-    function showPets() {
-      var text = document.getElementById("search").value.toLowerCase();
-      var html = "";
-      pets.forEach(function (p) {
-        var matchType = currentType === "All" || p.type === currentType;
-        var matchText = (p.name + p.breed + p.short).toLowerCase().includes(text);
-        if (matchType && matchText) html += petCard(p);
-      });
-      document.getElementById("petList").innerHTML = html;
-      document.getElementById("noResult").classList.toggle("d-none", html !== "");
-    }
-
-    function setFilter(type, btn) {
-      currentType = type;
-      document.querySelectorAll(".chip").forEach(function (c) { c.classList.remove("active"); });
-      btn.classList.add("active");
-      showPets();
-    }
-
-    document.getElementById("search").addEventListener("keyup", showPets);
-    showPets();
-  </script>
+  <script src="js/browse.js"></script>
 </body>
 </html>

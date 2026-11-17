@@ -16,7 +16,6 @@
     <div class="box">
       <h2 class="text-center mb-1">Create Account</h2>
       <p class="text-center small">Join PetCare and find your new friend</p>
-
       <form id="signupForm" novalidate>
         <div class="mb-3">
           <label class="form-label">Full Name</label>
@@ -36,7 +35,6 @@
         </div>
         <button class="btn btn-main w-100">Sign Up</button>
       </form>
-
       <p class="text-center small mt-3 mb-0">Already have an account? <a href="login.html">Login</a></p>
     </div>
   </div>
@@ -45,28 +43,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
-  <script>
-    loadNavbar("");
-    loadFooter();
-
-    document.getElementById("signupForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-      var name = document.getElementById("name");
-      var email = document.getElementById("email");
-      var password = document.getElementById("password");
-      var confirm = document.getElementById("confirm");
-      var ok = true;
-
-      if (name.value.trim().length < 3) { showError(name, "Name must be at least 3 characters"); ok = false; } else showError(name, "");
-      if (!isEmail(email.value)) { showError(email, "Enter a valid email"); ok = false; } else showError(email, "");
-      if (password.value.length < 6) { showError(password, "Password must be at least 6 characters"); ok = false; } else showError(password, "");
-      if (confirm.value !== password.value) { showError(confirm, "Passwords do not match"); ok = false; } else showError(confirm, "");
-
-      if (ok) {
-        showToast("Account created! Please login.");
-        setTimeout(function () { window.location.href = "login.html"; }, 1500);
-      }
-    });
-  </script>
+  <script src="js/signup.js"></script>
 </body>
 </html>
