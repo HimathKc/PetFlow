@@ -61,7 +61,7 @@ PetFlow/
 ### 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone <https://github.com/HimathKc/PetFlow>
 ```
 
 ### 2. Move the Project
